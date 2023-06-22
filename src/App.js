@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './App.css'
+import Navbar from './Compoents/Navbar'
+import Dashbords from './Compoents/Dashbord'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Adduser from './Compoents/Adduser'
+import Edituser from './Compoents/Edituser'
+import Viewuser from './Compoents/Viewuser'
+import { ToastContainer } from 'react-toastify'
 
+import 'react-toastify/dist/ReactToastify.css'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <ToastContainer />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashbords />} />
+          <Route path="/adduser" element={<Adduser />} />
+          <Route path="/Edituser/:id" element={<Edituser />} />
+          <Route path="/viewuser/:id" element={<Viewuser />} />
+          <Route path="*" element={<Viewuser />} />
+        </Routes>
+      </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
